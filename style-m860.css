@@ -1,0 +1,72 @@
+@media screen and (max-width:860px) {
+
+    #view {
+        padding: 0;
+        align-items: stretch;
+    }
+
+    #component {
+        flex-direction: column;
+    }
+
+    #inputs {
+        text-align: center;
+        box-sizing: border-box;
+        display: flex;
+        height: fit-content;
+    }
+
+    input {
+        width: 4.3rem;
+        height: 4.3rem;
+    }
+
+    h1 {
+        padding: 0;
+    }
+
+    .text {
+        margin-bottom: 0;
+    }
+
+    .text>p:nth-last-of-type(1) {
+        display: none;
+    }
+
+    #ball {
+        margin: auto;
+        max-width: 60%;
+        height: auto;
+        box-shadow: inset 0 0 40px 8px rgb(0, 0, 0),  0 0 100px 0 rgba(238, 207, 204, 0.871);
+    }
+
+    #age {
+        flex-direction: column;
+        width: auto;
+        font-weight: 600;
+    }
+
+    #age>div {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #age>p {
+        margin-bottom: 0;
+    }
+    
+    .leftcol {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+    }
+
+    button {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #summary {
+        display: none;
+    }
+}

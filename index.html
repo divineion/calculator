@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,900;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-m860.css">
+    <script src="app.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="view">
+        <div id="component">
+            <div class="leftcol">
+                <div class="text">
+                    <h1>
+                        I am an age calculator
+                    </h1>
+                    <p>
+                    Enter your date of birth.
+                    </p>
+                    <p>
+                    I'll tell you how young you are. 
+                    </p>   
+                </div>
+                <form action="">
+                    <fieldset  id="inputs">
+                        <label for=""></label>
+                            <input type="number" id="day" placeholder="DD" class="birthDay" autofocus>
+                        <label for="month"></label>
+                            <input type="number" id="month" placeholder="MM" class="birthMonth" value="" >
+                            <label for="year">
+                        <input type="number" id="year" placeholder="YY" class="birthYear">
+                        </label>
+                    </fieldset>
+                    <p class="errorMessage">There seems to be a misunderstanding.</p>
+                    <button type="submit" >Calculate</button>
+                </form>
+            </div>
+            <div id="ball">
+                <div id="summary">
+                    <p>You were born on&nbsp;<span class="daySummary"></span>&nbsp;<span class="monthSummary"></span>&nbsp;<span class="yearSummary"></span></p>
+                </div>
+                <div id="age">
+                    <div id="years">
+                        <p></p>
+                        <p>&nbsp;years</p>
+                    </div>
+                    <div id="monthes">
+                        <p></p>
+                        <p>&nbsp;monthes</p>
+                    </div>
+                    <div id="days">
+                        <p></p>
+                        <p>&nbsp;days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
