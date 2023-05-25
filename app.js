@@ -29,7 +29,6 @@ birthMonth.addEventListener("blur", function (e) {
     birthMonth.classList.remove("invalid");
     birthDay.classList.remove("invalid");
     errorMessage.classList.remove("invalid");
-    birthYear.disabled = false;
     birthYear.focus();
   };
   const dayMonthTallyFailure = function () {
@@ -85,16 +84,17 @@ birthYear.addEventListener("blur", function (e) {
   }
 });
 
-form.addEventListener("change", function () {
+form.addEventListener("submit", function (e) {
+  e.preventDefault;
   daySummary.textContent = birthDay.value;
+  monthSummary.textContent = birthMonth.value;
+  yearSummary.textContent = birthYear.value;
+  alert("date de naissance"+birthYear.value)
 });
 
 const date1 = today;
-const date2 = new Date(birthYear.value, birthMonth.value, birthDay.value);
+let date2 = new Date(birthYear.value, birthMonth.value-1, birthDay.value);
 
-daySummary.textContent = birthDay.value;
-monthSummary.textContent = birthMonth.value;
-yearSummary.textContent = birthYear.value;
 
 // YearReport.innerHTML = Year.value;
 // const today = new Date; //décomposition :
