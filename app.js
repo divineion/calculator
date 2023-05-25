@@ -13,7 +13,7 @@ const yearSummary = document.querySelector(".yearSummary");
 const test = document.querySelector("#test");
 const currentMonth = today.getMonth();
 const ageInMonth = document.querySelector(".monthes");
-const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const ageInDays = document.querySelector(".days");
 
 //vérification de la saisie user
@@ -58,6 +58,17 @@ birthMonth.addEventListener("blur", function () {
 
 birthYear.addEventListener("blur", function (e) {
   e.preventDefault;
+  //conformité années bissextiles, LE TRUC MARCHE BIEN A L'ENVERS
+  if (birthYear.value % 4 == 0) {
+    daysInMonth[1] === 29;
+    console.log(daysInMonth[1]);
+  }
+  for (i = 0; i < birthMonth.value; i++)
+    if (birthDay.value > daysInMonth[i]) {
+      birthMonth.classList.add("invalid");
+      birthYear.classList.add("invalid");
+    }
+
   if (birthYear.value > currentYear || !birthYear.value) {
     birthYear.classList.add("invalid");
     errorMessage.classList.add("invalid");
@@ -88,7 +99,6 @@ test.addEventListener("click", function (e) {
   let diffYears = date1.getFullYear() - date2.getFullYear();
   const ageInYears = document.querySelector(".years");
   ageInYears.textContent = diffYears;
-
   if (birthDay.value <= today.getDate()) {
     ageInDays.textContent = today.getDate() - parseInt(birthDay.value);
   } else if (birthDay.value > today.getDate()) {
@@ -98,8 +108,6 @@ test.addEventListener("click", function (e) {
   if (birthMonth.value <= today.getMonth() + 1) {
     ageInMonth.textContent = today.getMonth() + 1 - parseInt(birthMonth.value);
   } else if (birthMonth.value > today.getMonth() + 1) {
-    console.log(ageInMonth);
-    console.log("mois supérieur");
     ageInYears.textContent = diffYears - 1;
     ageInMonth.textContent =
       12 - (parseInt(birthMonth.value) - (today.getMonth() + 1));
