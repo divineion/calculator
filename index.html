@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style-m860.css">
     <script src="app.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -33,7 +36,7 @@
                         <label for="month"></label>
                             <input type="number" id="month" placeholder="MM" class="birthMonth" autocomplete="off">
                             <label for="year">
-                        <input type="number" id="year" placeholder="YY" class="birthYear" autocomplete="off">
+                        <input type="number" id="year" placeholder="YYYY" class="birthYear" autocomplete="off">
                         </label>
                     </fieldset>
                     <p class="errorMessage">There seems to be a misunderstanding.</p>
@@ -44,17 +47,20 @@
                         <p>You were born on&nbsp;<span class="daySummary"></span>&nbsp;<span class="monthSummary"></span>&nbsp;<span class="yearSummary"></span></p>
                     </div>
                     <div id="age">
-                        <div id="years">
-                            <p>You're age is&nbsp;<span class="years"></span>&nbsp;years,&nbsp;<span class="monthes"></span>&nbsp;monthes,&nbsp;<span class="years"></span>&nbsp;years.</p>
-                            <p></p>
-                        </div>
-                        <div id="monthes">
-                            <p></p>
-                            <p>&nbsp;monthes</p>
-                        </div>
-                        <div id="days">
-                            <p></p>
-                            <p>&nbsp;days</p>
+                        <p>You're age is </p>
+                        <div class="column-container">
+                            <div id="years">
+                                <p class="years num"></p>
+                                <p>years</p>
+                            </div>
+                            <div id="monthes num">
+                                <p class="monthes"></p>
+                                <p>&nbsp;monthes</p>
+                            </div>
+                            <div id="days num">
+                                <p class="days"></p>
+                                <p>&nbsp;days</p>
+                            </div>
                         </div>
                     </div>
                 </div>
