@@ -51,6 +51,7 @@ birthMonth.addEventListener("blur", function () {
       dayMonthTally();
     }
 
+  //ATTENTION : MESSAGE D'ERREUR A MODIFIER
   const regexMonth = RegExp(/0[1-9]|1[012]/);
   regexMonth.exec(birthMonth.value) ? dayMonthTally() : dayMonthTallyFailure();
 });
