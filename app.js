@@ -15,6 +15,7 @@ const currentMonth = today.getMonth();
 const ageInMonth = document.querySelector(".monthes");
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const ageInDays = document.querySelector(".days");
+const ageInYears = document.querySelector(".years");
 
 //vérification de la saisie user
 birthDay.addEventListener("blur", function (e) {
@@ -30,43 +31,35 @@ birthDay.addEventListener("blur", function (e) {
 });
 
 birthMonth.addEventListener("blur", function () {
-  const dayMonthTally = function () {
-    birthMonth.classList.remove("invalid");
-    birthDay.classList.remove("invalid");
-    errorMessage.classList.remove("invalid");
-    birthYear.focus();
-  };
-  const dayMonthTallyFailure = function () {
-    birthMonth.classList.add("invalid");
-    birthDay.classList.add("invalid");
-    errorMessage.classList.add("invalid");
-    errorMessage.textContent = "This month seems to be longer than usual.";
-  };
-
   for (i = 0; i < birthMonth.value; i++)
     if (birthDay.value > daysInMonth[i]) {
-      console.log("error");
-      dayMonthTallyFailure();
+      birthMonth.classList.add("invalid");
+      birthDay.classList.add("invalid");
+      errorMessage.classList.add("invalid");
+      errorMessage.textContent = "This month seems to be longer than usual.";
     } else {
-      dayMonthTally();
+      birthMonth.classList.remove("invalid");
+      birthDay.classList.remove("invalid");
+      errorMessage.classList.remove("invalid");
+      errorMessage.textContent = "This month seems to be longer than usual.";
     }
-
-  //ATTENTION : MESSAGE D'ERREUR A MODIFIER
-  const regexMonth = RegExp(/0[1-9]|1[012]/);
-  regexMonth.exec(birthMonth.value) ? dayMonthTally() : dayMonthTallyFailure();
 });
+
+//ATTENTION : MESSAGE D'ERREUR A MODIFIER
+// const regexMonth = RegExp(/0[1-9]|1[012]/);
+// regexMonth.exec(birthMonth.value) ? dayMonthTally() : dayMonthTallyFailure();
 
 birthYear.addEventListener("blur", function (e) {
   e.preventDefault;
   //conformité années bissextiles, LE TRUC MARCHE BIEN A L'ENVERS
-  if (birthYear.value % 4 == 0) {
-    daysInMonth[1] === 29;
-    console.log(daysInMonth[1]);
-  }
+  // if (birthYear.value % 4 == 0) {
+  //   daysInMonth[1] === 29;
+  //   console.log(daysInMonth[1]);
+  // }
   for (i = 0; i < birthMonth.value; i++)
     if (birthDay.value > daysInMonth[i]) {
       birthMonth.classList.add("invalid");
-      birthYear.classList.add("invalid");
+      birthYears.classList.add("invalid");
     }
 
   if (birthYear.value > currentYear || !birthYear.value) {
@@ -97,19 +90,26 @@ test.addEventListener("click", function (e) {
   console.log(date2);
   const date1 = today;
   let diffYears = date1.getFullYear() - date2.getFullYear();
-  const ageInYears = document.querySelector(".years");
   ageInYears.textContent = diffYears;
   if (birthDay.value <= today.getDate()) {
     ageInDays.textContent = today.getDate() - parseInt(birthDay.value);
   } else if (birthDay.value > today.getDate()) {
     ageInDays.textContent =
-      daysInMonth[today.getMonth() + 1] - (birthDay.value - today.getDate());
+      daysInMonth[today.getMonth() + 1] - birthDay.value + today.getDate();
   }
-  if (birthMonth.value <= today.getMonth() + 1) {
+  if (birthMonth.value < today.getMonth() + 1) {
     ageInMonth.textContent = today.getMonth() + 1 - parseInt(birthMonth.value);
   } else if (birthMonth.value > today.getMonth() + 1) {
     ageInYears.textContent = diffYears - 1;
     ageInMonth.textContent =
       12 - (parseInt(birthMonth.value) - (today.getMonth() + 1));
+  } else if (
+    birthMonth.value == today.getMonth() + 1 &&
+    birthDay.value > today.getDate()
+  ) {
+    ageInMonth.textContent = 11;
+    ageInDays.textContent =
+      daysInMonth[today.getMonth() + 1] - birthDay.value + today.getDate();
+    ageInYears.textContent = diffYears - 1;
   }
 });
